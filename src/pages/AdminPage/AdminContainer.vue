@@ -1,15 +1,16 @@
 <template>
   <div>
+    <h4 :href="urlValidatedEvents"></h4>
     <ul class="items">
       <li v-for="item in itemsAdmin" :key="item.id">
-          <Item :Item="item"/>
+        <Item :Item="item" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import Item from './Components/AdminItems.vue';
+import Item from "./Components/AdminItems.vue";
 
 export default {
   components: {
@@ -25,9 +26,12 @@ export default {
   },
   methods: {
     async fetchAdminEventsList() {
-      this.itemsAdmin = await fetch('http://localhost:8000/api/event').then(
+      this.itemsAdmin = await fetch("http://localhost:8000/api/event").then(
         response => response.json(),
       );
+    },
+    urlValidatedEvents() {
+      return `http://localhost:8000/api/validatedEvents`;
     },
   },
 };
@@ -36,11 +40,11 @@ console.log(Item);
 </script>
 
 <style lang="scss" scoped>
-.items{
-    display: flex;
-    flex-wrap: wrap
+.items {
+  display: flex;
+  flex-wrap: wrap;
 }
-li{
-    list-style-type: none;
+li {
+  list-style-type: none;
 }
 </style>
