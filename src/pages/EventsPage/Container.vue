@@ -1,5 +1,6 @@
 <template>
   <div>
+    <nav></nav>
     <ul class="items">
       <li v-for="item in items" :key="item.id">
           <Item :Item="item"/>
@@ -11,8 +12,10 @@
 
 <script>
 import Item from './Components/Item.vue';
+import ApiService from '@/services/ApiService';
 
 export default {
+  name: 'Container',
   components: {
     Item,
   },
@@ -26,9 +29,7 @@ export default {
   },
   methods: {
     async fetchEventsList() {
-      this.items = await fetch('http://localhost:8000/api/event').then(
-        response => response.json(),
-      );
+      this.items = await ApiService.events.getAll();
     },
   },
 };

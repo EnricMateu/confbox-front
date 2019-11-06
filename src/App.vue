@@ -1,15 +1,11 @@
 <template>
-  <Container></Container>
+  <router-view></router-view>
 </template>
 
 <script>
-import Container from './pages/EventsPage/Container.vue';
 
 export default {
   name: 'app',
-  components: {
-    Container,
-  },
 };
 </script>
 
