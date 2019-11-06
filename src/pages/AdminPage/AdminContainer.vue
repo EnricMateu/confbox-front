@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="items">
-      <li v-for="item in items" :key="item.id">
+      <li v-for="item in itemsAdmin" :key="item.id">
           <Item :Item="item"/>
       </li>
     </ul>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Item from './Components/Item.vue';
+import Item from './Components/AdminItems.vue';
 
 export default {
   components: {
@@ -17,20 +17,22 @@ export default {
   },
   data() {
     return {
-      items: [],
+      itemsAdmin: [],
     };
   },
   created() {
-    this.fetchEventsList();
+    this.fetchAdminEventsList();
   },
   methods: {
-    async fetchEventsList() {
-      this.items = await fetch('http://localhost:8000/api/event').then(
+    async fetchAdminEventsList() {
+      this.itemsAdmin = await fetch('http://localhost:8000/api/event').then(
         response => response.json(),
       );
     },
   },
 };
+
+console.log(Item);
 </script>
 
 <style lang="scss" scoped>

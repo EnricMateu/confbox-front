@@ -1,16 +1,26 @@
 <template>
-  <Container></Container>
+<div>
+    <h1> CVC </h1>
+    <AdminContainer> </AdminContainer>
+  <div>
+    <!-- <Container></Container> -->
+  </div>
+</div>
 </template>
 
 <script>
-import Container from './pages/EventsPage/Container.vue';
+
+import AdminContainer from './pages/AdminPage/AdminContainer.vue';
+// import Container from './pages/EventsPage/Container.vue';
 
 export default {
   name: 'app',
   components: {
-    Container,
+    // Container,
+    AdminContainer,
   },
 };
+
 </script>
 
 <style>
