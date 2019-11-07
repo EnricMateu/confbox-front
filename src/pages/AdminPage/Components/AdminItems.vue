@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 const monthNames = [
   'January',
   'February',
@@ -170,7 +171,7 @@ figure {
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    background-color: rgba($primary, 0.8);
+    background-color: rgba($accent, 0.8);
     text-shadow: 1px 1px rgba(black, 0.7);
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     span {
@@ -198,7 +199,7 @@ figure {
       line-height: 1.35;
       text-shadow: 1px 1px rgba(black, 0.7);
       > span {
-        background-color: rgba($primary, 0.8);
+        background-color: rgba($accent, 0.8);
       }
     }
     p {
