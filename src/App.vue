@@ -1,5 +1,10 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <div>
+      <router-link to="/events">Home</router-link>
+    </div>
+    <router-view/>
+  </div>
 </template>
 
 <script>
