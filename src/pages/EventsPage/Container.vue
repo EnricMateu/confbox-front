@@ -8,7 +8,6 @@
   </div>
 </template>
 
-
 <script>
 import Item from './Components/Item.vue';
 
