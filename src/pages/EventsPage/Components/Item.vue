@@ -1,10 +1,11 @@
 <template>
     <div>
-        <a :href='Item.event_url'>
-        <figure>
+        <a href='#'>
+        <figure :style="{backgroundImage: `url(${Item.img})`}">
             <div class='date'>
-                <span>{{getInitialDate.day}} - {{getFinalDate}}</span>
-                <span>{{getInitialDate.month}}</span>
+                <span>{{getInitialDate.day}} - {{getFinalDate.day}}</span>
+                <span v-if="getInitialDate.month !== getFinalDate.month">{{getInitialDate.month}} - {{getFinalDate.month}}</span>
+                <span v-else> {{getInitialDate.month}} </span>
             </div>
             <figcaption>
                 <h4>
@@ -31,7 +32,7 @@ export default {
       return { day: this.Item.date_from.split('-')[2], month: monthNames[parseInt(this.Item.date_from.split('-')[1], 10) - 1] };
     },
     getFinalDate() {
-      return this.Item.date_to.split('-')[2];
+      return { day: this.Item.date_to.split('-')[2], month: monthNames[parseInt(this.Item.date_to.split('-')[1], 10) - 1] };
     },
   },
 };
@@ -89,9 +90,8 @@ figure {
     align-items: flex-start;
     justify-content: center;
     width: 290px;
-    height: 395px;
+    height: 205px;
     padding: 20px 20px;
-    background-image: url('https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100%;
