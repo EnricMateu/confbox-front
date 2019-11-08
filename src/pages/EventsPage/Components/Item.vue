@@ -1,7 +1,8 @@
 <template>
     <div>
-        <a href='#'>
-        <figure :style="{backgroundImage: `url(${Item.img})`}">
+        <a :href='Item.event_url'>
+          <figure>
+        <!-- <figure :style="{backgroundImage: `url(${Item.img})`}"> -->
             <div class='date'>
                 <span>{{getInitialDate.day}} - {{getFinalDate.day}}</span>
                 <span v-if="getInitialDate.month !== getFinalDate.month">{{getInitialDate.month}} - {{getFinalDate.month}}</span>
@@ -92,6 +93,7 @@ figure {
     width: 290px;
     height: 205px;
     padding: 20px 20px;
+    background-image: url('https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 100%;
