@@ -1,28 +1,41 @@
 <template>
-    <div>
-        <a :href='Item.event_url'>
-          <figure>
-        <!-- <figure :style="{backgroundImage: `url(${Item.img})`}"> -->
-            <div class='date'>
-                <span>{{getInitialDate.day}} - {{getFinalDate.day}}</span>
-                <span v-if="getInitialDate.month !== getFinalDate.month">{{getInitialDate.month}} - {{getFinalDate.month}}</span>
-                <span v-else> {{getInitialDate.month}} </span>
-            </div>
-            <figcaption>
-                <h4>
-                    <span>{{Item.title}}</span>
-                </h4>
-                <p>{{Item.country}}, {{Item.city}}</p>
-                <p>{{Item.topic}}</p>
-            </figcaption>
-        </figure>
-    </a>
-</div>
+  <div>
+    <figure>
+      <!-- <figure :style="{backgroundImage: `url(${Item.img})`}"> -->
+      <div class="date">
+        <span>{{getInitialDate.day}} - {{getFinalDate.day}}</span>
+        <span
+          v-if="getInitialDate.month !== getFinalDate.month"
+        >{{getInitialDate.month}} - {{getFinalDate.month}}</span>
+        <span v-else>{{getInitialDate.month}}</span>
+      </div>
+      <a id="url" :href="Item.event_url">URL</a>
+      <figcaption>
+        <h4>
+          <span>{{Item.title}}</span>
+        </h4>
+        <p>{{Item.country}}, {{Item.city}}</p>
+        <p>{{Item.topic}}</p>
+      </figcaption>
+    </figure>
+  </div>
 </template>
 
 <script>
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'];
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 export default {
   name: 'Item',
   props: {
@@ -30,19 +43,25 @@ export default {
   },
   computed: {
     getInitialDate() {
-      return { day: this.Item.date_from.split('-')[2], month: monthNames[parseInt(this.Item.date_from.split('-')[1], 10) - 1] };
+      return {
+        day: this.Item.date_from.split('-')[2],
+        month: monthNames[parseInt(this.Item.date_from.split('-')[1], 10) - 1],
+      };
     },
     getFinalDate() {
-      return { day: this.Item.date_to.split('-')[2], month: monthNames[parseInt(this.Item.date_to.split('-')[1], 10) - 1] };
+      return {
+        day: this.Item.date_to.split('-')[2],
+        month: monthNames[parseInt(this.Item.date_to.split('-')[1], 10) - 1],
+      };
     },
   },
 };
 </script>
 
 <style lang='scss' scoped>
-$font-monospace: 'Source Code Pro', sans-serif;
-$font-sans: 'Source Code Pro', monospace;
-$font-awesome: 'Font Awesome 5 Free';
+$font-monospace: "Source Code Pro", sans-serif;
+$font-sans: "Source Code Pro", monospace;
+$font-awesome: "Font Awesome 5 Free";
 
 $base-duration: 250ms;
 
@@ -57,89 +76,105 @@ $sm: 20rem;
 $med: 48rem;
 $lg: 64rem;
 
-*, *:before, *:after {
-    box-sizing: border-box;
-    outline: none;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  outline: none;
 }
 
 html {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 16px;
-    font-smooth: auto;
-    font-weight: 300;
-    line-height: 1.5;
-    color: #444;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-smooth: auto;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #444;
 }
 
 body {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-    background-color: #34495e;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #34495e;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 8px;
+  background-color: rgba($primary, 0.8);
 }
 
 figure {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 290px;
-    height: 205px;
-    padding: 20px 20px;
-    background-image: url('https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    transition: all 0.5s cubic-bezier(.25,.8,.25,1);
-    overflow: hidden;
-    &:before,
-    &:after {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 290px;
+  height: 205px;
+  padding: 20px 20px;
+  background-image: url("https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  &:before,
+  &:after {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     //font-family: $font-awesome;
-    }
-    &:before {
-    content: '';
-    background-color: rgba(black,0.1);
-    z-index: 0;
-    }
-    &:after {
-    content: '';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s cubic-bezier(.25,.8,.25,1);;
-    overflow: hidden;
-    }
-    &:hover {
-    background-size: 175%;
-    &:after {
-    content: '♣︎';
-    background-color: rgba($primary,0.9);
-    color: white;
-    font-size: 72px;
-    z-index: 2;
-    }
-    .date {
-    bottom: -59px;
-    }
-    figcaption {
-    transform: translateY(-110%);
-    }
-    }
-    .date {
+  }
+  // &:before {
+  //   content: "";
+  //   background-color: rgba(black, 0.1);
+  //   z-index: 0;
+  // }
+  // &:after {
+  //   content: "";
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  //   overflow: hidden;
+  //}
+  // &:hover {
+  //   background-size: 175%;
+  //   &:after {
+  //     content: "Apply";
+  //     background-color: rgba($primary, 0.9);
+  //     color: white;
+  //     font-size: 60px;
+  //     z-index: 2;
+  //   }
+  //   .date {
+  //     bottom: -59px;
+  //   }
+  //   .url {
+  //     z-index: 2;
+  //   }
+  //   figcaption {
+  //     transform: translateY(-120%);
+  //   }
+  // }
+  .date {
     position: absolute;
     bottom: 0;
     right: 30px;
@@ -148,41 +183,41 @@ figure {
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    background-color: rgba($primary,0.8);
-    text-shadow: 1px 1px rgba(black,0.7);
-    transition: all 0.5s cubic-bezier(.25,.8,.25,1);;
+    background-color: rgba($primary, 0.8);
+    text-shadow: 1px 1px rgba(black, 0.7);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     span {
+      color: white;
+      line-height: 1;
+      &:first-child {
+        font-family: $font-monospace;
+        font-size: 20px;
+        font-weight: 900;
+      }
+      &:last-child {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+  figcaption {
     color: white;
-    line-height: 1;
-    &:first-child {
-       font-family: $font-monospace;
-       font-size: 20px;
-       font-weight: 900;
-    }
-    &:last-child {
-       font-size: 14px;
-       font-weight: 400;
-    }
-    }
-    }
-    figcaption {
-    color: white;
-    transition: all 0.5s cubic-bezier(.25,.8,.25,1);;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 1;
     h4 {
-    margin: 0 0 5px;
-    font-family: $font-monospace;
-    font-size: 24px;
-    line-height: 1.35;
-    text-shadow: 1px 1px rgba(black,0.7);
-    > span {
-       background-color: rgba($primary,0.8);
-    }
+      margin: 0 0 5px;
+      font-family: $font-monospace;
+      font-size: 24px;
+      line-height: 1.35;
+      text-shadow: 1px 1px rgba(black, 0.7);
+      > span {
+        background-color: rgba($primary, 0.8);
+      }
     }
     p {
-    margin: 0;
-    line-height: 1.5;
+      margin: 0;
+      line-height: 1.5;
     }
-    }
+  }
 }
 </style>
