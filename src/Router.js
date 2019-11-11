@@ -3,6 +3,7 @@ import Router from 'vue-router';
 // import User from './pages/User.vue';
 import Container from './pages/EventsPage/Container.vue';
 import AdminContainer from './pages/AdminPage/AdminContainer.vue';
+import ValidatedEvents from './pages/ValidatedEvents/ValidatedEventsContainer.vue';
 
 
 Vue.use(Router);
@@ -20,6 +21,11 @@ const router = new Router({
       path: '/admin',
       name: 'AdminContainer',
       component: AdminContainer,
+    },
+    {
+      path: '/validatedEvents',
+      name: 'ValidatedEvents',
+      component: ValidatedEvents,
     },
     // {
     //   path: '/user',

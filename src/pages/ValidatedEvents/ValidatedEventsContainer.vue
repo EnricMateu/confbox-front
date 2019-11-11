@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>Events Admin view</h2>
+    <h2>Validated Events List</h2>
     <ul class="items">
-      <li v-for="item in itemsAdmin" :key="item.id">
+      <li v-for="item in itemsList" :key="item.id">
         <Item :Item="item" />
       </li>
     </ul>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Item from './Components/AdminItems.vue';
+import Item from '@/pages/EventsPage/Components/Item.vue';
 
 export default {
   components: {
@@ -18,15 +18,15 @@ export default {
   },
   data() {
     return {
-      itemsAdmin: [],
+      itemsList: [],
     };
   },
   created() {
-    this.fetchAdminEventsList();
+    this.fetchValidatedEvents();
   },
   methods: {
-    async fetchAdminEventsList() {
-      this.itemsAdmin = await fetch('http://localhost:8000/api/event').then(
+    async fetchValidatedEvents() {
+      this.itemsList = await fetch('http://localhost:8000/api/validatedEvents').then(
         response => response.json(),
       );
     },

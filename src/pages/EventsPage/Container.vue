@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>List of all events in DB</h2>
     <nav></nav>
     <ul class="items">
       <li v-for="item in items" :key="item.id">
