@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Container from './pages/EventsPage/Container.vue';
+import EventsContainer from './pages/Events/EventsContainer.vue';
+import Profile from './pages/User/Profile.vue';
 
 Vue.use(Router);
 
@@ -9,11 +10,15 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/events',
-      name: 'Container',
-      component: Container,
+      path: '/',
+      name: 'eventsContainer',
+      component: EventsContainer,
     },
-    // { path: '/about', component: About },
+    {
+      path: '/user-profile',
+      name: 'profile',
+      component: Profile,
+    },
   ],
 });
 

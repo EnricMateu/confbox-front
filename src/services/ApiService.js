@@ -1,8 +1,16 @@
 class ApiService {
   url = 'http://localhost:8000';
 
+  validatedEvents = '/api/event';
+
   events = {
-    getAll: () => fetch(`${this.url}/api/event`).then(data => data.json()),
+    getValidatedEvents: () => fetch(`${this.url}${this.validatedEvents}`).then(data => data.json()),
+  };
+
+  userData = '/api/userprofile';
+
+  users = {
+    getUserData: ({ id }) => fetch(`${this.url}${this.userData}/${id}`).then(data => data.json()),
   };
 }
 
