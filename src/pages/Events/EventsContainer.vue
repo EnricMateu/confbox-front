@@ -1,9 +1,14 @@
 <template>
   <div>
     <nav></nav>
-    <ul class="items">
+    <div v-if="items.length == 0">
+      <h1>Momentaneamente no disponemos de Eventos</h1>
+    </div>
+    <ul class="items" v-else>
       <li v-for="item in items" :key="item.id">
+        <router-link :to="'/event-details/'+item.id">
           <Item :Item="item"/>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -12,10 +17,10 @@
 
 <script>
 import Item from './Components/Item.vue';
-import ApiService from '@/services/ApiService';
+// import ApiService from '@/services/ApiService';
 
 export default {
-  name: 'Container',
+  name: 'EventsContainer',
   components: {
     Item,
   },
@@ -24,12 +29,13 @@ export default {
       items: [],
     };
   },
-  created() {
-    this.fetchEventsList();
+  async mounted() {
+    await this.callToAction();
+    this.items = this.$store.state.events;
   },
   methods: {
-    async fetchEventsList() {
-      this.items = await ApiService.events.getValidatedEvents();
+    async callToAction() {
+      await this.$store.dispatch('fetchEventsList', this.events);
     },
   },
 };
@@ -40,6 +46,7 @@ export default {
     display: flex;
     flex-wrap: wrap
 }
+
 li{
     list-style-type: none;
 }
