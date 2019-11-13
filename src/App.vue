@@ -4,27 +4,23 @@
       <router-link to="/events">Events List</router-link>
       <br>
       <router-link to="/admin">Admin View</router-link>
+      <br>
+      <router-link to="/validatedEvents">Validated Events</router-link>
     </div>
     <div>
     </div>
     <router-view/>
-    <!-- <a class="b_vEvents" :href="VEventsView">Validated Events List</a> -->
   </div>
 </template>
 
 <script>
 
-
 export default {
   name: 'app',
   components: {
   },
-  methods: {
-    // VEventsView() {
-    //   return 'http://localhost:8000/api/validatedEvents';
-    // },
-  },
 };
+
 </script>
 
 <style>

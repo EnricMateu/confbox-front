@@ -53,9 +53,6 @@ export default {
     getFinalDate() {
       return this.Item.date_to.split('-')[2];
     },
-    // getStatus (){
-    //   return this.Item.approval_status;
-    // }
   },
 };
 </script>
