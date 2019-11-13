@@ -21,14 +21,13 @@ export default {
       itemsAdmin: [],
     };
   },
-  created() {
-    this.fetchAdminEventsList();
+  async mounted() {
+    await this.callToAction();
+    this.itemsAdmin = this.$store.state.allEvents;
   },
   methods: {
-    async fetchAdminEventsList() {
-      this.itemsAdmin = await fetch('http://localhost:8000/api/event').then(
-        response => response.json(),
-      );
+    async callToAction() {
+      await this.$store.dispatch('fetchAllEvents', this.allEvents);
     },
   },
 };
