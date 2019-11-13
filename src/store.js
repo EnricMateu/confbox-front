@@ -7,11 +7,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     events: [],
+    allEvents: [],
     users: [],
   },
   mutations: {
-    addEvents(state, events) {
+    addValidatedEvents(state, events) {
       state.events = events;
+    },
+    addAllEvents(state, allEvents) {
+      state.allEvents = allEvents;
     },
   },
   getters: {
@@ -20,7 +24,11 @@ export default new Vuex.Store({
   actions: {
     async fetchEventsList({ commit }) {
       const events = await ApiService.events.getValidatedEvents();
-      commit('addEvents', events);
+      commit('addValidatedEvents', events);
+    },
+    async fetchAllEvents({ commit }) {
+      const allEvents = await ApiService.events.getAllEvents();
+      commit('addAllEvents', allEvents);
     },
   },
 });
