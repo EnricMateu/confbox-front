@@ -1,23 +1,19 @@
 <template>
-  <div id="profile">
-    <h1>{{id}}</h1>
+  <div id="app">
     <h1>{{ msg }}</h1>
     <ul class="data">
       {{data.profile_name}}
-      <h2 id="">{{data.first_name}} {{data.last_name}}</h2>
-      <h2 id="">{{data.street_address}}, {{data.city}}, {{data.country}}.</h2>
+      <h2 id="patata">{{data.first_name}} {{data.last_name}}</h2>
+      <h2 id="patata2">{{data.street_address}}, {{data.city}}, {{data.country}}.</h2>
       <a>
-        <h2 id="">{{data.linkedin_url}}</h2>
-      </a>
+        <h2 id="patata3">{{data.linkedin_url}}</h2></a>
     </ul>
   </div>
 </template>
 
 <script>
-import ApiService from '../../services/ApiService';
-
 export default {
-  name: 'profile',
+  name: 'app',
   data() {
     return {
       msg: 'User Profile',
@@ -29,15 +25,16 @@ export default {
   },
   methods: {
     async fetchUserData() {
-      const { id } = this.$route.params.id;
-      this.data = await ApiService.users.getUserData({ id });
+      this.data = await fetch('http://localhost:8001/api/userprofiles/2').then(
+        response => response.json(),
+      );
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-#profile {
+<style>
+#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
