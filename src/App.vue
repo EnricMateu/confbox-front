@@ -10,7 +10,6 @@
     <div>
     </div>
     <router-view/>
-    <!-- <a class="b_vEvents" :href="VEventsView">Validated Events List</a> -->
   </div>
 </template>
 

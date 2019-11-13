@@ -1,6 +1,7 @@
 <template>
   <div>
     <figure>
+      <a class="url" :href="Item.event_url">URL</a>
       <!-- <figure :style="{backgroundImage: `url(${Item.img})`}"> -->
       <div class="date">
         <span>{{getInitialDate.day}} - {{getFinalDate.day}}</span>
@@ -9,7 +10,6 @@
         >{{getInitialDate.month}} - {{getFinalDate.month}}</span>
         <span v-else>{{getInitialDate.month}}</span>
       </div>
-      <a id="url" :href="Item.event_url">URL</a>
       <figcaption>
         <h4>
           <span>{{Item.title}}</span>
@@ -101,14 +101,13 @@ body {
   height: 100vh;
   background-color: #34495e;
 }
-
-a {
+.url {
   text-decoration: none;
   color: white;
   font-size: 16px;
   position: absolute;
   top: 0;
-  right: 0px;
+  right:0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +115,6 @@ a {
   padding: 8px;
   background-color: rgba($primary, 0.8);
 }
-
 figure {
   position: relative;
   display: flex;
