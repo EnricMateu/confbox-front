@@ -6,6 +6,8 @@
       <router-link to="/admin">Admin View</router-link>
       <br>
       <router-link to="/validatedEvents">Validated Events</router-link>
+      <br>
+      <router-link to="/createEvent">Create Event</router-link>
     </div>
     <div>
     </div>

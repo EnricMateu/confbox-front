@@ -4,7 +4,7 @@ import Router from 'vue-router';
 import Container from './pages/EventsPage/Container.vue';
 import AdminContainer from './pages/AdminPage/AdminContainer.vue';
 import ValidatedEvents from './pages/ValidatedEvents/ValidatedEventsContainer.vue';
-
+import CreateEvent from './pages/CreateEvent/CreateEvent.vue';
 
 Vue.use(Router);
 
@@ -27,12 +27,11 @@ const router = new Router({
       name: 'ValidatedEvents',
       component: ValidatedEvents,
     },
-    // {
-    //   path: '/user',
-    //   name: 'User',
-    //   component: User,
-    // },
-    // { path: '/about', component: About },
+    {
+      path: '/createEvent',
+      name: 'createEvent',
+      component: CreateEvent,
+    },
   ],
 });
 
