@@ -5,7 +5,12 @@
       <br>
       <router-link to="/admin">Admin View</router-link>
       <br>
+      <router-link to="/validatedEvents">Validated Events</router-link>
+      <br>
+      <router-link to="/createEvent">Create Event</router-link>
+      <br>
       <router-link to="/">Home</router-link>
+
     </div>
     <div>
       <router-view/>
