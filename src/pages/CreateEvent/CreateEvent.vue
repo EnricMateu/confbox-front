@@ -7,29 +7,33 @@
     <br />
     <span>From date</span>
     <br />
-    <input v-model="Event.date_from"/>
+    <input v-model="Event.date_from" />
     <br />
     <span>To date</span>
     <br />
-    <input v-model="Event.date_to"/>
+    <input v-model="Event.date_to" />
     <br />
     <span>City</span>
     <br />
-    <input v-model="Event.city"/>
+    <input v-model="Event.city" />
     <br />
     <span>Country</span>
     <br />
-    <input v-model="Event.country"/>
+    <input v-model="Event.country" />
     <br />
     <span>Event URL</span>
     <br />
-    <input v-model="Event.event_url"/>
+    <input v-model="Event.event_url" />
     <br />
     <span>Topic</span>
     <br />
-    <input v-model="Event.topic"/>
+    <input v-model="Event.topic" />
     <br />
-    <button>Submit</button>
+    <span>Organizing company</span>
+    <br />
+    <input v-model="Event.company" />
+    <br />
+    <button class="btn btn-success" @click="createEvent">Submit</button>
   </div>
 </template>
 
@@ -46,19 +50,32 @@ export default {
         country: '',
         event_url: '',
         topic: '',
-      },
+        company: '',
+      }
     };
   },
-  created() {
-    // this.fetchEventData();
-  },
-
   methods: {
-    // async fetchEventData() {
-    //   this.data = await fetch('http://localhost:8081/createEvent').then(
-    //     response => response.json(),
-    //   );
-    // },
-  },
+    createEvent() {
+      const { description, date_from, date_to, city, country, event_url, topic } = this;
+      this.axios
+        .post('http://localhost:8000/api/event', {
+          description,
+          date_from,
+          date_to,
+          city,
+          country,
+          event_url,
+          topic
+        })
+        .then(
+          response => {
+            console.log(response);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+    }
+  }
 };
 </script>
